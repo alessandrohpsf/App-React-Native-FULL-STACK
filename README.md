@@ -1,2 +1,2 @@
-# App-React-Native-FULL-STACK
+# LimpApp
 Aplicativo de reporte para pontos de lixo irregular
