@@ -16,7 +16,7 @@ const store = createStore(reducer);
 const Stack = createStackNavigator();
 
 const myOptions = {
-  title: 'App de Exemplo',
+  title: 'Reporte ponto de lixo',
   headerTintColor: 'white',
   headerStyle: {
     backgroundColor: '#006aff',
@@ -30,12 +30,12 @@ function App() {
         <Stack.Screen
           name="Create"
           component={CreateEmployee}
-          options={{ ...myOptions, title: 'Funcionário' }}
+          options={{ ...myOptions, title: 'Fomulário de Reporte' }}
         />
         <Stack.Screen
           name="Profile"
           component={Profile}
-          options={{ ...myOptions, title: 'Perfil do Funcionário' }}
+          options={{ ...myOptions, title: 'Perfil do Reporte' }}
         />
       </Stack.Navigator>
     </View>

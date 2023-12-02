@@ -163,7 +163,7 @@ const CreateEmployee = ({ navigation, route }) => {
     >
       <View>
         <TextInput
-          label="Nome"
+          label="Situação"
           style={styles.inputStyle}
           value={name}
           onFocus={() => setenableShift(false)}
@@ -171,17 +171,17 @@ const CreateEmployee = ({ navigation, route }) => {
           mode="outlined"
           onChangeText={(text) => setName(text)}
         />
-        <TextInput
-          label="E-mail"
+        {/* <TextInput
+          label="Causa"
           style={styles.inputStyle}
           value={email}
           theme={theme}
           onFocus={() => setenableShift(false)}
           mode="outlined"
           onChangeText={(text) => setEmail(text)}
-        />
+        /> */}
         <TextInput
-          label="Telefone"
+          label="Descrição"
           style={styles.inputStyle}
           value={phone}
           theme={theme}
@@ -192,7 +192,7 @@ const CreateEmployee = ({ navigation, route }) => {
         />
 
         <TextInput
-          label="Salário"
+          label="Endereço"
           style={styles.inputStyle}
           value={salary}
           theme={theme}
@@ -201,7 +201,7 @@ const CreateEmployee = ({ navigation, route }) => {
           onChangeText={(text) => setSalary(text)}
         />
         <TextInput
-          label="Cargo"
+          label="Complemento"
           style={styles.inputStyle}
           value={position}
           theme={theme}
