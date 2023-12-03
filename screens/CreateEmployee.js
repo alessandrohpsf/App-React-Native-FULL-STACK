@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
   Text,
@@ -10,6 +10,11 @@ import {
 import { TextInput, Button } from 'react-native-paper';
 import * as ImagePicker from 'expo-image-picker';
 import * as Permissions from 'expo-permissions';
+import * as Location from 'expo-location';
+import MapView, { Marker } from 'react-native-maps';
+
+
+
 
 const CreateEmployee = ({ navigation, route }) => {
   const getDetails = (type) => {
@@ -40,6 +45,21 @@ const CreateEmployee = ({ navigation, route }) => {
   const [position, setPosition] = useState(getDetails('position'));
   const [modal, setModal] = useState(false);
   const [enableshift, setenableShift] = useState(false);
+  const [location, setLocation] = useState(null);
+
+  useEffect(() => {
+    (async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== 'granted') {
+        Alert.alert('Permissão de localização não concedida', 'Por favor, conceda permissão de localização para obter a localização.');
+        return;
+      }
+      let locationData = await Location.getCurrentPositionAsync({});
+      setLocation(locationData);
+    })();
+  }, [])
+
+
 
   const submitData = () => {
     fetch('http://192.168.1.102:3000/send-data', {
@@ -209,6 +229,37 @@ const CreateEmployee = ({ navigation, route }) => {
           mode="outlined"
           onChangeText={(text) => setPosition(text)}
         />
+
+        <View>
+          {location && (
+           <View>
+            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Sua Localização</Text>
+            <Text>Latitude: {location.coords.latitude}</Text>
+            <Text>Longitude: {location.coords.longitude}</Text>
+            <MapView
+            style={{ width: '100%', height: 200 }}
+            initialRegion={{
+              latitude: location.coords.latitude,
+              longitude: location.coords.longitude,
+              latitudeDelta: 0.0922,
+              longitudeDelta: 0.0421,
+            }}
+            >
+            <Marker
+              coordinate={{
+                latitude: location.coords.latitude,
+                longitude: location.coords.longitude,
+              }}
+              title="Sua Localização"
+            />
+            </MapView>
+            </View>
+         )}
+        </View>
+        
+        
+
+
         <Button
           style={styles.inputStyle}
           icon={picture == '' ? 'upload' : 'check'}
