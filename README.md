@@ -6,8 +6,6 @@ Aplicativo de reportes de pontos de lixo irregular. Visando a limpeza da cidade 
 
 Essas instruções permitirão que você obtenha uma cópia do projeto em operação na sua máquina local para fins de desenvolvimento e teste.
 
-Consulte **[Implantação](#-implanta%C3%A7%C3%A3o)** para saber como implantar o projeto.
-
 ### 📋 Pré-requisitos
 
 Necessário ter instalado o Mongo DB e Node JS no seu computador, para usar corretamente também é necessário a instalação do Expo no smartphone, com sistema operacional de sua preferência. 
